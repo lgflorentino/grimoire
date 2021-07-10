@@ -1,7 +1,7 @@
 grimoire
 ---
 
-##Desc:
+## Desc:
 Buncha scripts for building things. These are tuned to my system, however you may like to checkout the metadata to see where the script was inherited from which will be much more generic.
 
 ## Dependencies
