@@ -1,0 +1,23 @@
+#!/usr/bin/sh
+
+: ${DEBUG:="false"}
+: ${PRJ_ROOT:="$(cd "$(dirname $0)/.."; pwd)"}
+: ${LOG_FILE:="${PRJ_ROOT}/.$(basename ${PRJ_ROOT}).log"}
+
+
+msg () {
+    echo "[$(date +"%Y-%m-%dT%H:%M:%S")] $*" | tee -a $LOG_FILE
+}
+
+
+emsg () {
+    echo "[$(date +"%Y-%m-%dT%H:%M:%S")][ERROR] $*" | tee -a $LOG_FILE
+}
+
+dmsg () {
+    if [ "$DEBUG" = "true" ]; 
+    then 
+        echo "[$(date +"%Y-%m-%dT%H:%M:%S")][DEBUG] $*" | tee -a $LOG_FILE
+    fi
+}
+

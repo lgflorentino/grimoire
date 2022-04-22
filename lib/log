@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+: ${LOG_FILE:="$(cd ..; dirname $(pwd)).log"}
+
+touch $LOG_FILE
+
