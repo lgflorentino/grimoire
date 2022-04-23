@@ -4,20 +4,33 @@
 : ${PRJ_ROOT:="$(cd "$(dirname $0)/.."; pwd)"}
 : ${LOG_FILE:="${PRJ_ROOT}/.$(basename ${PRJ_ROOT}).log"}
 
+ERROR_FG="\033[38;5;0m"
+ERROR_BG="\033[48;5;1m"
+DEFAULT_FG="\033[39m"
+DEFAULT_BG="\033[49m"
+MSG_FG="\033[30m"
+MSG_BG="\033[104m"
+DEBUG_FG="\033[40m"
+DEBUG_BG="\033[100m"
+
+COLOUR_ERROR="${ERROR_FG}${ERROR_BG}"
+COLOUR_DEFAULT="${DEFAULT_FG}${DEFAULT_BG}"
+COLOUR_DEBUG="${DEBUG_FG}${DEBUG_BG}"
+COLOUR_MSG="${MSG_FG}${MSG_BG}"
 
 msg () {
-    echo "[$(date +"%Y-%m-%dT%H:%M:%S")] $*" | tee -a $LOG_FILE
+    echo "[$(date +"%H:%M:%S")]${COLOUR_MSG}[MSG]${COLOUR_DEFAULT} $*" | tee -a $LOG_FILE
 }
 
 
 emsg () {
-    echo "[$(date +"%Y-%m-%dT%H:%M:%S")][ERROR] $*" | tee -a $LOG_FILE
+    echo "[$(date +"%H:%M:%S")]${COLOUR_ERROR}[ERROR]${COLOUR_DEFAULT} $*" | tee -a $LOG_FILE
 }
 
 dmsg () {
     if [ "$DEBUG" = "true" ]; 
     then 
-        echo "[$(date +"%Y-%m-%dT%H:%M:%S")][DEBUG] $*" | tee -a $LOG_FILE
+        echo "[$(date +"%H:%M:%S")]${COLOUR_DEBUG}[DEBUG]${COLOUR_DEFAULT} $*" | tee -a $LOG_FILE
     fi
 }
 
